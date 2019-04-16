@@ -646,7 +646,7 @@ namespace Stateless
         {
             if (_triggerConfiguration.ContainsKey(trigger.Trigger))
                 throw new InvalidOperationException(
-                    string.Format(StateMachineResources.CannotReconfigureParameters, trigger));
+                    string.Format(Constants.StateMachineResources.CannotReconfigureParameters, trigger));
 
             _triggerConfiguration.Add(trigger.Trigger, trigger);
         }
@@ -656,12 +656,12 @@ namespace Stateless
             if (unmetGuardConditions?.Any() ?? false)
                 throw new InvalidOperationException(
                     string.Format(
-                        StateMachineResources.NoTransitionsUnmetGuardConditions,
+                        Constants.StateMachineResources.NoTransitionsUnmetGuardConditions,
                         trigger, state, string.Join(", ", unmetGuardConditions)));
 
             throw new InvalidOperationException(
                 string.Format(
-                    StateMachineResources.NoTransitionsPermitted,
+                    Constants.StateMachineResources.NoTransitionsPermitted,
                     trigger, state));
         }
 

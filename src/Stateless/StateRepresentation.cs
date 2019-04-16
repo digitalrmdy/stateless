@@ -91,7 +91,7 @@ namespace Stateless
                 if (actual.Count <= 1)
                     return actual.FirstOrDefault();
 
-                var message = string.Format(StateRepresentationResources.MultipleTransitionsPermitted, trigger, _state);
+                var message = string.Format(Constants.StateRepresentationResources.MultipleTransitionsPermitted, trigger, _state);
                 throw new InvalidOperationException(message);
             }
 

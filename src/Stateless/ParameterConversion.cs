@@ -13,13 +13,13 @@ namespace Stateless
             
             if (args.Length <= index)
                 throw new ArgumentException(
-                    string.Format(ParameterConversionResources.ArgOfTypeRequiredInPosition, argType, index));
+                    string.Format(Constants.ParameterConversionResources.ArgOfTypeRequiredInPosition, argType, index));
 
             var arg = args[index];
 
             if (arg != null && !argType.IsAssignableFrom(arg.GetType()))
                 throw new ArgumentException(
-                    string.Format(ParameterConversionResources.WrongArgType, index, arg.GetType(), argType));
+                    string.Format(Constants.ParameterConversionResources.WrongArgType, index, arg.GetType(), argType));
 
             return arg;
         }
@@ -35,7 +35,7 @@ namespace Stateless
         {
             if (args.Length > expected.Length)
                 throw new ArgumentException(
-                    string.Format(ParameterConversionResources.TooManyParameters, expected.Length, args.Length));
+                    string.Format(Constants.ParameterConversionResources.TooManyParameters, expected.Length, args.Length));
 
             for (int i = 0; i < expected.Length; ++i)
                 Unpack(args, expected[i], i);
