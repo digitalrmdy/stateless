@@ -75,7 +75,7 @@ namespace Stateless
 
                 if (actual.Count() > 1)
                     throw new InvalidOperationException(
-                        string.Format(StateRepresentationResources.MultipleTransitionsPermitted,
+                        string.Format(Constants.StateRepresentationResources.MultipleTransitionsPermitted,
                         trigger, _state));
 
                 return actual

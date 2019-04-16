@@ -1640,7 +1640,7 @@ namespace Stateless
             {
                 if (destination.Equals(_representation.UnderlyingState))
                 {
-                    throw new ArgumentException(StateConfigurationResources.SelfTransitionsEitherIgnoredOrReentrant);
+                    throw new ArgumentException(Constants.StateConfigurationResources.SelfTransitionsEitherIgnoredOrReentrant);
                 }
             }
 
