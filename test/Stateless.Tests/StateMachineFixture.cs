@@ -919,7 +919,6 @@ namespace Stateless.Tests
             Assert.Single(sm.PermittedTriggers, trigger);
         }
 
-
         [Fact]
         public void WhenConfigurePermittedTransitionOnTriggerWithParameters_ThenStateMachineCanFireTrigger()
         {

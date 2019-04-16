@@ -125,8 +125,11 @@ namespace Stateless
         public IEnumerable<TTrigger> PermittedTriggers
         {
             get
-            {
-                return GetPermittedTriggers();
+            { 
+                var set = new HashSet<TTrigger>();
+                for (var state = CurrentRepresentation; state != null; state = state.Superstate)
+                    set.UnionWith(state.TriggerBehaviours.Keys);
+                return set; 
             }
         }
 
@@ -567,7 +570,7 @@ namespace Stateless
         /// <returns>True if the trigger can be fired, false otherwise.</returns>
         public bool CanFire(TTrigger trigger)
         {
-            return CurrentRepresentation.CanHandle(trigger);
+            return CurrentRepresentation.CanHandle(trigger, new object[_triggerConfiguration.TryGetValue(trigger, out var triggerConfiguration) ? triggerConfiguration.Arity : 0]);
         }
 
         /// <summary>
@@ -591,7 +594,7 @@ namespace Stateless
             return string.Format(
                 "StateMachine {{ State = {0}, PermittedTriggers = {{ {1} }}}}",
                 State,
-                string.Join(", ", GetPermittedTriggers().Select(t => t.ToString()).ToArray()));
+                string.Join(", ", PermittedTriggers.Select(t => t.ToString()).ToArray()));
         }
 
         /// <summary>
